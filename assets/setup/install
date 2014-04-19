@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+mkdir -p /var/run/apt-cacher-ng
+chown apt-cacher-ng:apt-cacher-ng /var/run/apt-cacher-ng
+chmod 755 /var/run/apt-cacher-ng
+cat > /etc/supervisor/conf.d/apt-cacher-ng.conf <<EOF
+[program:apt-cacher-ng]
+directory=/var/run/apt-cacher-ng
+command=/usr/sbin/apt-cacher-ng pidfile=/var/run/apt-cacher-ng/pid SocketPath=/var/run/apt-cacher-ng/socket foreground=1
+user=apt-cacher-ng
+autostart=false
+autorestart=true
+stdout_logfile=/var/log/supervisor/%(program_name)s.log
+stderr_logfile=/var/log/supervisor/%(program_name)s_error.log
+EOF
+
