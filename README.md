@@ -31,12 +31,12 @@ docker run --name='apt-cacher-ng' -d -p 3142:3142 \
 sameersbn/apt-cacher-ng:latest
 ```
 
-Create a file named `/etc/apt/apt.conf.d/01proxy` on your host with the following content:
+To enabling caching on the host create the file `/etc/apt/apt.conf.d/01proxy` with the following content:
 ```
 Acquire::http { Proxy "http://127.0.0.1:3142"; };
 ```
 
-Similarly you can add the following line in your dockerfiles so that the cache is made use of during package installation.
+Similarly to enable caching in your docker containers you can add the following line in your Dockerfile so that the cache is made use of during package installation.
 
 ```dockerfile
 RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
