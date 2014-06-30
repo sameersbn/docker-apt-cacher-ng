@@ -2,89 +2,73 @@
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [Configuration](#configuration)
-    - [Data Store](#data-store)
-    - [Securing the server](#securing-the-server)
-    - [Allowing remote access](#allowing-remote-access)
-- [Maintenance](#maintenance)
-    - [SSH Login](#ssh-login)
+- [Data Store](#data-store)
+- [Upgrading](#upgrading)
 
 # Introduction
-Dockerfile to build a redis container image which can be linked to other containers.
+Dockerfile to build a apt-cacher-ng container.
 
 # Installation
-
 Pull the latest version of the image from the docker index. This is the recommended method of installation as it is easier to update image in the future. These builds are performed by the **Docker Trusted Build** service.
 
 ```
-docker pull sameersbn/redis:latest
+docker pull sameersbn/apt-cacher-ng:latest
 ```
 
 Alternately you can build the image yourself.
 
 ```
-git clone https://github.com/sameersbn/docker-redis.git
-cd docker-redis
-docker build -t="$USER/redis" .
+git clone https://github.com/sameersbn/docker-apt-cacher-ng.git
+cd docker-apt-cacher-ng
+docker build -t="$USER/apt-cacher-ng" .
 ```
 
 # Quick Start
-Run the redis image
+Run the image
 
 ```
-docker run -name redis -d sameersbn/redis:latest
-REDIS_IP=$(docker inspect redis | grep IPAddres | awk -F'"' '{print $4}')
+docker run --name='apt-cacher-ng' -d -p 3142:3142 \
+sameersbn/apt-cacher-ng:latest
 ```
 
-To test if the redis server is configured properly, try connecting to the server.
-
+Create a file named `/etc/apt/apt.conf.d/01proxy` on your host with the following content:
 ```
-redis-cli -h ${REDIS_IP}
-```
-
-# Configuration
-
-## Data Store
-You should mount a volume at /var/lib/redis.
-
-```
-mkdir -p /opt/redis
-docker run -name redis -d \
-  -v /opt/redis:/var/lib/redis sameersbn/redis:latest
+Acquire::http { Proxy "http://127.0.0.1:3142"; };
 ```
 
-This will make sure that the data stored in the database is not lost when the image is stopped and started again.
+Similarly you can add the following line in your dockerfiles so that the cache is made use of during package installation.
 
-# Maintenance
+```dockerfile
+RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
+```
 
-## SSH Login
-There are two methods to gain root login to the container, the first method is to add your public rsa key to the authorized_keys file and build the image.
-
-The second method is use the dynamically generated password. Every time the container is started a random password is generated using the pwgen tool and assigned to the root user. This password can be fetched from the docker logs.
+# Data Store
+You should mount a volume at `/var/cache/apt-cacher-ng` so that you can reuse the existing cache if the container is stopped and started.
 
 ```
-docker logs redis 2>&1 | grep '^User: ' | tail -n1
+docker run --name='apt-cacher-ng' -d -p 3142:3142 \
+-v /opt/apt-cacher-ng:/var/cache/apt-cacher-ng \
+sameersbn/apt-cacher-ng:latest
 ```
-This password is not persistent and changes every time the image is executed.
 
 # Upgrading
 
 To upgrade to newer releases, simply follow this 3 step upgrade procedure.
 
-- **Step 1**: Stop the currently running image
+- **Step 1**: Update the docker image.
 
 ```
-docker stop redis
+docker pull sameersbn/apt-cacher-ng:latest
 ```
 
-- **Step 2**: Update the docker image.
+- **Step 2**: Stop the currently running image
 
 ```
-docker pull sameersbn/redis:latest
+docker stop bind
 ```
 
 - **Step 3**: Start the image
 
 ```
-docker run -name redis -d [OPTIONS] sameersbn/redis:latest
+docker run -name bind -d [OPTIONS] sameersbn/apt-cacher-ng:latest
 ```
