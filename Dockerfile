@@ -13,5 +13,4 @@ EXPOSE 3142
 
 VOLUME ["/var/cache/apt-cacher-ng"]
 
-ENTRYPOINT ["/app/init"]
-CMD ["app:start"]
+CMD ["/app/init"]
