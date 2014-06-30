@@ -8,7 +8,6 @@ echo User: root Password: $ROOT_PASSWORD
 
 # start supervisord
 /usr/bin/supervisord
-supervisorctl start sshd
 
 appStart () {
 	chown -R apt-cacher-ng:apt-cacher-ng /var/cache/apt-cacher-ng
