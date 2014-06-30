@@ -10,4 +10,4 @@ RUN apt-get update && \
 EXPOSE 3142
 VOLUME ["/var/cache/apt-cacher-ng"]
 CMD chmod 777 /var/cache/apt-cacher-ng && \
-		/usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng foreground=1
+		sudo -u apt-cacher-ng -H /usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng foreground=1
