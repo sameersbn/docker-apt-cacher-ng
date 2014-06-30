@@ -7,9 +7,6 @@ RUN apt-get update && \
 		chown apt-cacher-ng:apt-cacher-ng /var/run/apt-cacher-ng && \
 		apt-get clean # 20140625
 
-ADD assets/ /app/
-RUN chmod 755 /app/init
-
 EXPOSE 3142
 
 VOLUME ["/var/cache/apt-cacher-ng"]
