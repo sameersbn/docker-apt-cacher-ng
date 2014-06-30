@@ -8,8 +8,6 @@ RUN apt-get update && \
 		apt-get clean # 20140625
 
 EXPOSE 3142
-
 VOLUME ["/var/cache/apt-cacher-ng"]
-
 CMD chmod 777 /var/cache/apt-cacher-ng && \
 		/usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng foreground=1
