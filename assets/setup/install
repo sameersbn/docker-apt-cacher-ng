@@ -7,7 +7,7 @@ chmod 755 /var/run/apt-cacher-ng
 cat > /etc/supervisor/conf.d/apt-cacher-ng.conf <<EOF
 [program:apt-cacher-ng]
 directory=/var/run/apt-cacher-ng
-command=/usr/sbin/apt-cacher-ng pidfile=/var/run/apt-cacher-ng/pid SocketPath=/var/run/apt-cacher-ng/socket foreground=1
+command=/usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng pidfile=/var/run/apt-cacher-ng/pid SocketPath=/var/run/apt-cacher-ng/socket foreground=1
 user=apt-cacher-ng
 autostart=false
 autorestart=true
