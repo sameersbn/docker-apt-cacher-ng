@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
 
+chown -R apt-cacher-ng:root /var/cache/apt-cacher-ng
 chmod 777 /var/cache/apt-cacher-ng
 exec sudo -u apt-cacher-ng -H /usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng
