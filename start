@@ -2,4 +2,4 @@
 set -e
 
 chmod 777 /var/cache/apt-cacher-ng
-sudo -u apt-cacher-ng -H /usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng
+exec sudo -u apt-cacher-ng -H /usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng
