@@ -6,7 +6,7 @@ RUN apt-get update && \
 		sed 's/# ForeGround: 0/ForeGround: 1/' -i /etc/apt-cacher-ng/acng.conf && \
 		mkdir -p -m 755 /var/run/apt-cacher-ng && \
 		chown apt-cacher-ng:apt-cacher-ng /var/run/apt-cacher-ng && \
-		apt-get clean # 20140625
+		apt-get clean && rm -rf /var/lib/apt/lists/* # 20140818
 
 ADD start /start
 RUN chmod 755 /start
