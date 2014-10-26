@@ -11,8 +11,10 @@ Dockerfile to build a apt-cacher-ng container.
 
 # Contributing
 
+If you find this image useful here's how you can help:
+
 - Send a Pull Request with your awesome new features and bug fixes
-- Help new users with [Issues](https://github.com/sameersbn/docker-redmine/issues) they may encounter
+- Help new users with [Issues](https://github.com/sameersbn/docker-apt-cacher-ng/issues) they may encounter
 - Send me a tip on [Gittip](https://gittip.com/sameersbn/) or using Bitcoin at **16rDxVqJPyYAFYPLduTaSiwe7ZiY1hHqKM**
 
 # Installation
