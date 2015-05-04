@@ -12,5 +12,4 @@ dependencies:
 test:
   override:
     - docker run -d -p 172.17.42.1:3142:3142 sameersbn/apt-cacher-ng; sleep 10
-    - echo 'Acquire::http::Proxy "http://172.17.42.1:3142";' > /etc/apt/apt.conf.d/01proxy
-    - apt-get update
+    - export http_proxy=http://172.17.42.1:3142 && apt-get update
