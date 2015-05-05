@@ -11,5 +11,5 @@ dependencies:
     - mkdir -p ~/docker-apt-cacher-ng; docker save --output ~/docker-apt-cacher-ng/image.tar sameersbn/apt-cacher-ng
 test:
   override:
-    - docker run -d -p 172.17.42.1:3142:3142 sameersbn/apt-cacher-ng; sleep 10
-    - nc -z 172.17.42.1 3142
+    - docker run -d -p 23142:3142 sameersbn/apt-cacher-ng; sleep 10
+    - nc -z 127.0.0.1 23142
