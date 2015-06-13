@@ -2,9 +2,9 @@
 set -e
 
 mkdir -p -m 755 /var/run/apt-cacher-ng
-chown apt-cacher-ng:apt-cacher-ng /var/run/apt-cacher-ng
+chown ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} /var/run/apt-cacher-ng
 
-chown -R apt-cacher-ng:root ${APT_CACHER_NG_CACHE_DIR}
+chown -R ${APT_CACHER_NG_USER}:root ${APT_CACHER_NG_CACHE_DIR}
 chmod 777 ${APT_CACHER_NG_CACHE_DIR}
 
-exec gosu apt-cacher-ng /usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng
+exec gosu ${APT_CACHER_NG_USER} /usr/sbin/apt-cacher-ng -c /etc/apt-cacher-ng
