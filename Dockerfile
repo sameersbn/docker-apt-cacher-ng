@@ -10,7 +10,7 @@ RUN apt-get update && \
  && sed 's/# ForeGround: 0/ForeGround: 1/' -i /etc/apt-cacher-ng/acng.conf \
  && rm -rf /var/lib/apt/lists/*
 
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 
 EXPOSE 3142
