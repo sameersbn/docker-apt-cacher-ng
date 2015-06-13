@@ -15,4 +15,4 @@ RUN chmod 755 /start
 
 EXPOSE 3142
 VOLUME ["${APT_CACHER_NG_CACHE_DIR}"]
-CMD ["/start"]
+ENTRYPOINT ["/start"]
