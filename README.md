@@ -74,6 +74,13 @@ docker run --name apt-cacher-ng -d --restart=always \
 
 For the cache to preserve its state across container shutdown and startup you should mount a volume at `/var/cache/apt-cacher-ng`.
 
+SELinux users should update the security context of the host mountpoint so that it plays nicely with Docker:
+
+```bash
+mkdir -p /srv/docker/apt-cacher-ng
+sudo chcon -Rt svirt_sandbox_file_t /srv/docker/apt-cacher-ng
+```
+
 > **Note**: *The [Quickstart](#quickstart) command already mounts a volume for persistence.*
 
 ## Usage
