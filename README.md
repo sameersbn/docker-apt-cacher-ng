@@ -12,7 +12,7 @@
 
 # Introduction
 
-Dockerfile to build a `apt-cacher-ng` container.
+Dockerfile to build a [Apt-Cacher NG](https://www.unix-ag.uni-kl.de/~bloch/acng/) container.
 
 # Contributing
 
