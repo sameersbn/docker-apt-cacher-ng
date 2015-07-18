@@ -4,6 +4,7 @@
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
+  - [Issues](#issues)
 - [Getting started](#getting-started)
   - [Installation](#installation)
   - [Quickstart](#quickstart)
@@ -26,6 +27,19 @@ If you find this image useful here's how you can help:
 - Send a Pull Request with your awesome new features and bug fixes
 - Help new users with [Issues](https://github.com/sameersbn/docker-apt-cacher-ng/issues) they may encounter
 - Support the development of this image with a [donation](http://www.damagehead.com/donate/)
+
+## Issues
+
+Before reporting your issue please try updating the Docker version on your Docker host and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) which provides installation instructions for all supported platforms and distributions.
+
+SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
+
+If the above recommendations do not help then [report your issue](https://github.com/sameersbn/docker-apt-cacher-ng/issues/new) with the following additional information:
+
+- The host distribution and release version.
+- Output of the `docker version` command
+- Output of the `docker info` command
+- The `docker run` command you used to run the image (you may mask out the sensitive bits).
 
 # Getting started
 
