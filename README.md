@@ -11,6 +11,7 @@
   - [Persistence](#persistence)
   - [Usage](#usage)
 - [Maintenance](#maintenance)
+  - [Cache expiry](#cache-expiry)
   - [Upgrading](#upgrading)
   - [Shell Access](#shell-access)
 
@@ -96,6 +97,19 @@ RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.c
 ```
 
 # Maintenance
+
+## Cache expiry
+
+Arguments specified on the `docker run` command are passed on the `apt-cacher-ng` command. Using this feature, we can specify the `-e` argument to initiate the cache expiry maintenance task.
+
+```bash
+docker run --name apt-cacher-ng -d --restart=always \
+  --publish 3142:3142 \
+  --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
+  sameersbn/apt-cacher-ng:latest -e
+```
+
+The same can also be achieved on a running instance by visiting the url http://172.17.42.1:3142/acng-report.html in the web browser and selecting the **Start Scan and/or Expiration** option.
 
 ## Upgrading
 
