@@ -67,7 +67,7 @@ You should mount a volume at `/var/cache/apt-cacher-ng` so that you can reuse th
 ```bash
 docker run --name apt-cacher-ng -d \
     --publish 3142:3142 \
-    --volume /opt/apt-cacher-ng:/var/cache/apt-cacher-ng \
+    --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
     sameersbn/apt-cacher-ng:latest
 ```
 
