@@ -36,10 +36,8 @@ SELinux users should try disabling SELinux using the command `setenforce 0` to s
 
 If the above recommendations do not help then [report your issue](https://github.com/sameersbn/docker-apt-cacher-ng/issues/new) with the following additional information:
 
-- The host distribution and release version.
-- Output of the `docker version` command
-- Output of the `docker info` command
-- The `docker run` command you used to run the image (you may mask out the sensitive bits).
+- Output of the `docker version` and `docker info` commands
+- The `docker run` command or `docker-compose.yml` used to start the image. Please mask out the sensitive bits.
 
 # Getting started
 
