@@ -6,7 +6,7 @@
 - [Contributing](#contributing)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [Data Store](#data-store)
+- [Persistence](#persistence)
 - [Shell Access](#shell-access)
 - [Upgrading](#upgrading)
 
@@ -60,7 +60,7 @@ Similarly to enable caching in your docker containers you can add the following 
 RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
 ```
 
-# Data Store
+# Persistence
 
 You should mount a volume at `/var/cache/apt-cacher-ng` so that you can reuse the existing cache if the container is stopped and started.
 
