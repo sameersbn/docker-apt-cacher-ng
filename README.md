@@ -1,6 +1,7 @@
 [![Circle CI](https://circleci.com/gh/sameersbn/docker-apt-cacher-ng.svg?style=svg)](https://circleci.com/gh/sameersbn/docker-apt-cacher-ng)
 
 # Table of Contents
+
 - [Introduction](#introduction)
 - [Contributing](#contributing)
 - [Installation](#installation)
@@ -10,7 +11,8 @@
 - [Upgrading](#upgrading)
 
 # Introduction
-Dockerfile to build a apt-cacher-ng container.
+
+Dockerfile to build a `apt-cacher-ng` container.
 
 # Contributing
 
@@ -21,30 +23,34 @@ If you find this image useful here's how you can help:
 - Support the development of this image with a [donation](http://www.damagehead.com/donate/)
 
 # Installation
+
 Pull the latest version of the image from the docker index. This is the recommended method of installation as it is easier to update image in the future. These builds are performed by the **Docker Trusted Build** service.
 
-```
+```bash
 docker pull sameersbn/apt-cacher-ng:latest
 ```
 
-Alternately you can build the image yourself.
+Alternatively you can build the image yourself.
 
-```
+```bash
 git clone https://github.com/sameersbn/docker-apt-cacher-ng.git
 cd docker-apt-cacher-ng
-docker build -t="$USER/apt-cacher-ng" .
+docker build --tag $USER/apt-cacher-ng .
 ```
 
 # Quick Start
+
 Run the image
 
-```
-docker run --name='apt-cacher-ng' -d -p 3142:3142 \
-sameersbn/apt-cacher-ng:latest
+```bash
+docker run --name apt-cacher-ng -d \
+    --publish 3142:3142 \
+    sameersbn/apt-cacher-ng:latest
 ```
 
 To enabling caching on the host create the file `/etc/apt/apt.conf.d/01proxy` with the following content:
-```
+
+```bash
 Acquire::http { Proxy "http://127.0.0.1:3142"; };
 ```
 
@@ -55,12 +61,14 @@ RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.c
 ```
 
 # Data Store
+
 You should mount a volume at `/var/cache/apt-cacher-ng` so that you can reuse the existing cache if the container is stopped and started.
 
-```
-docker run --name='apt-cacher-ng' -d -p 3142:3142 \
--v /opt/apt-cacher-ng:/var/cache/apt-cacher-ng \
-sameersbn/apt-cacher-ng:latest
+```bash
+docker run --name apt-cacher-ng -d \
+    --publish 3142:3142 \
+    --volume /opt/apt-cacher-ng:/var/cache/apt-cacher-ng \
+    sameersbn/apt-cacher-ng:latest
 ```
 
 # Shell Access
@@ -78,7 +86,7 @@ Some linux distros (e.g. ubuntu) use older versions of the util-linux which do n
 To install `nsenter` execute the following command on your host,
 
 ```bash
-docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
+docker run --rm --volume /usr/local/bin:/target jpetazzo/nsenter
 ```
 
 Now you can access the container shell using the command
@@ -95,18 +103,18 @@ To upgrade to newer releases, simply follow this 3 step upgrade procedure.
 
 - **Step 1**: Update the docker image.
 
-```
+```bash
 docker pull sameersbn/apt-cacher-ng:latest
 ```
 
 - **Step 2**: Stop the currently running image
 
-```
+```bash
 docker stop bind
 ```
 
 - **Step 3**: Start the image
 
-```
+```bash
 docker run -name bind -d [OPTIONS] sameersbn/apt-cacher-ng:latest
 ```
