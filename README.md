@@ -99,7 +99,7 @@ RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.c
 
 ## Logs
 
-To access the Apt-Cacher NG logs, located at `/var/log/apt-cacher-ng`, you can used `docker exec`. For example, if you want to tail the logs:
+To access the Apt-Cacher NG logs, located at `/var/log/apt-cacher-ng`, you can use `docker exec`. For example, if you want to tail the logs:
 
 ```bash
 docker exec -it apt-cacher-ng tail -f /var/log/apt-cacher-ng/apt-cacher.log
