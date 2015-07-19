@@ -32,7 +32,7 @@ If you find this image useful here's how you can help:
 
 ## Issues
 
-Before reporting your issue please try updating the Docker version on your Docker host and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) which provides installation instructions for all supported platforms and distributions.
+Before reporting your issue please try updating Docker to the latest version and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) which provides installation instructions for all supported platforms and distributions.
 
 SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
 
