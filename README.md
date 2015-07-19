@@ -112,7 +112,7 @@ docker exec -it apt-cacher-ng tail -f /var/log/apt-cacher-ng/apt-cacher.log
 Arguments specified on the `docker run` command are passed on the `apt-cacher-ng` command. Using this feature, we can specify the `-e` argument to initiate the cache expiry maintenance task.
 
 ```bash
-docker run --name apt-cacher-ng -d --restart=always \
+docker run --name apt-cacher-ng -it --rm \
   --publish 3142:3142 \
   --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
   sameersbn/apt-cacher-ng:latest -e
