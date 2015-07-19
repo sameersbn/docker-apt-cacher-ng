@@ -10,6 +10,7 @@
   - [Quickstart](#quickstart)
   - [Persistence](#persistence)
   - [Usage](#usage)
+  - [Logs](#logs)
 - [Maintenance](#maintenance)
   - [Cache expiry](#cache-expiry)
   - [Upgrading](#upgrading)
@@ -94,6 +95,14 @@ Similarly, to use Apt-Cacher NG in you Docker containers add the following line 
 
 ```dockerfile
 RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
+```
+
+## Logs
+
+To access the Apt-Cacher NG logs, located at `/var/log/apt-cacher-ng`, you can used `docker exec`. For example, if you want to tail the logs:
+
+```bash
+docker exec -it apt-cacher-ng tail -f /var/log/apt-cacher-ng/apt-cacher.log
 ```
 
 # Maintenance
