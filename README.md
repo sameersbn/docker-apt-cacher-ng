@@ -32,14 +32,15 @@ If you find this image useful here's how you can help:
 
 ## Issues
 
-Before reporting your issue please try updating Docker to the latest version and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) which provides installation instructions for all supported platforms and distributions.
+Before reporting your issue please try updating Docker to the latest version and check if it resolves the issue. Refer to the Docker [installation guide](https://docs.docker.com/installation) for instructions.
 
 SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
 
-If the above recommendations do not help then [report your issue](../../issues/new) with the following additional information:
+If the above recommendations do not help then [report your issue](../../issues/new) along with the following information:
 
 - Output of the `docker version` and `docker info` commands
-- The `docker run` command or `docker-compose.yml` used to start the image. Please mask out the sensitive bits.
+- The `docker run` command or `docker-compose.yml` used to start the image. Mask out the sensitive bits.
+- Please state if you are using [Boot2Docker](http://www.boot2docker.io), [VirtualBox](https://www.virtualbox.org), etc.
 
 # Getting started
 
