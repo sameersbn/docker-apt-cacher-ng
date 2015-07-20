@@ -1,6 +1,6 @@
 [![Circle CI](https://circleci.com/gh/sameersbn/docker-apt-cacher-ng.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-apt-cacher-ng)
 
-# Table of Contents
+# sameersbn/apt-cacher-ng
 
 - [Introduction](#introduction)
   - [Contributing](#contributing)
