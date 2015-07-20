@@ -27,7 +27,7 @@ Apt-Cacher NG is a caching proxy, specialized for package files from Linux distr
 If you find this image useful here's how you can help:
 
 - Send a Pull Request with your awesome new features and bug fixes
-- Help new users with [Issues](https://github.com/sameersbn/docker-apt-cacher-ng/issues) they may encounter
+- Help users resolve their [issues](../../issues).
 - Support the development of this image with a [donation](http://www.damagehead.com/donate/)
 
 ## Issues
@@ -36,7 +36,7 @@ Before reporting your issue please try updating Docker to the latest version and
 
 SELinux users should try disabling SELinux using the command `setenforce 0` to see if it resolves the issue.
 
-If the above recommendations do not help then [report your issue](https://github.com/sameersbn/docker-apt-cacher-ng/issues/new) with the following additional information:
+If the above recommendations do not help then [report your issue](../../issues/new) with the following additional information:
 
 - Output of the `docker version` and `docker info` commands
 - The `docker run` command or `docker-compose.yml` used to start the image. Please mask out the sensitive bits.
