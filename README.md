@@ -90,14 +90,16 @@ sudo chcon -Rt svirt_sandbox_file_t /srv/docker/apt-cacher-ng
 
 To start using Apt-Cacher NG on your Debian (and Debian based) host, create the configuration file `/etc/apt/apt.conf.d/01proxy` with the following content:
 
-```bash
-Acquire::http { Proxy "http://172.17.42.1:3142"; };
+```config
+Acquire::HTTP::Proxy "http://172.17.42.1:3142";
+Acquire::HTTPS::Proxy "false";
 ```
 
 Similarly, to use Apt-Cacher NG in you Docker containers add the following line to your `Dockerfile` before any `apt-get` commands.
 
 ```dockerfile
-RUN echo 'Acquire::http { Proxy "http://172.17.42.1:3142"; };' >> /etc/apt/apt.conf.d/01proxy
+RUN echo 'Acquire::HTTP::Proxy "http://172.17.42.1:3142";' >> /etc/apt/apt.conf.d/01proxy \
+ && echo 'Acquire::HTTPS::Proxy "false";' >> /etc/apt/apt.conf.d/01proxy
 ```
 
 ## Logs
