@@ -70,6 +70,8 @@ docker run --name apt-cacher-ng -d --restart=always \
   sameersbn/apt-cacher-ng:latest
 ```
 
+*Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
+
 ## Persistence
 
 For the cache to preserve its state across container shutdown and startup you should mount a volume at `/var/cache/apt-cacher-ng`.
