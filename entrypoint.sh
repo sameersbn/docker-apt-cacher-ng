@@ -6,8 +6,8 @@ mkdir -p -m 755 /run/apt-cacher-ng
 chown ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} /run/apt-cacher-ng
 
 # create cache dir
+mkdir -p -m 0777 ${APT_CACHER_NG_CACHE_DIR}
 chown -R ${APT_CACHER_NG_USER}:root ${APT_CACHER_NG_CACHE_DIR}
-chmod 777 ${APT_CACHER_NG_CACHE_DIR}
 
 # create log dir
 mkdir -p -m 0755 ${APT_CACHER_NG_LOG_DIR}
