@@ -83,7 +83,7 @@ SELinux users should update the security context of the host mountpoint so that 
 
 ```bash
 mkdir -p /srv/docker/apt-cacher-ng
-sudo chcon -Rt svirt_sandbox_file_t /srv/docker/apt-cacher-ng
+chcon -Rt svirt_sandbox_file_t /srv/docker/apt-cacher-ng
 ```
 
 ## Usage
