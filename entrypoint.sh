@@ -2,15 +2,18 @@
 set -e
 
 # create pid directory
-mkdir -p -m 755 /run/apt-cacher-ng
+mkdir -p /run/apt-cacher-ng
+chmod -R 0755 /run/apt-cacher-ng
 chown ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} /run/apt-cacher-ng
 
 # create cache dir
-mkdir -p -m 0777 ${APT_CACHER_NG_CACHE_DIR}
+mkdir -p ${APT_CACHER_NG_CACHE_DIR}
+chmod -R 0755 ${APT_CACHER_NG_CACHE_DIR}
 chown -R ${APT_CACHER_NG_USER}:root ${APT_CACHER_NG_CACHE_DIR}
 
 # create log dir
-mkdir -p -m 0755 ${APT_CACHER_NG_LOG_DIR}
+mkdir -p ${APT_CACHER_NG_LOG_DIR}
+chmod -R 0755 ${APT_CACHER_NG_LOG_DIR}
 chown -R ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} ${APT_CACHER_NG_LOG_DIR}
 
 # allow arguments to be passed to apt-cacher-ng
