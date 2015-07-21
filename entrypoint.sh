@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
 
-# finalize file ownership and permissions
+# create pid directory
 mkdir -p -m 755 /var/run/apt-cacher-ng
 chown ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} /var/run/apt-cacher-ng
 
+# create cache dir
 chown -R ${APT_CACHER_NG_USER}:root ${APT_CACHER_NG_CACHE_DIR}
 chmod 777 ${APT_CACHER_NG_CACHE_DIR}
 
