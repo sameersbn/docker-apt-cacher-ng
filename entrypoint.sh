@@ -8,6 +8,10 @@ chown ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} /var/run/apt-cacher-ng
 chown -R ${APT_CACHER_NG_USER}:root ${APT_CACHER_NG_CACHE_DIR}
 chmod 777 ${APT_CACHER_NG_CACHE_DIR}
 
+# create log dir
+mkdir -p -m 0755 ${APT_CACHER_NG_LOG_DIR}
+chown -R ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} ${APT_CACHER_NG_LOG_DIR}
+
 # allow arguments to be passed to apt-cacher-ng
 if [[ ${1:0:1} = '-' ]]; then
   EXTRA_ARGS="$@"

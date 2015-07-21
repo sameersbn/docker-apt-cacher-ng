@@ -3,6 +3,7 @@ MAINTAINER sameer@damagehead.com
 
 ENV APT_CACHER_NG_VERSION=0.7.26 \
     APT_CACHER_NG_CACHE_DIR=/var/cache/apt-cacher-ng \
+    APT_CACHER_NG_LOG_DIR=/var/log/apt-cacher-ng \
     APT_CACHER_NG_USER=apt-cacher-ng
 
 RUN apt-get update && \
