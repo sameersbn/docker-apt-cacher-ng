@@ -2,8 +2,8 @@
 set -e
 
 # create pid directory
-mkdir -p -m 755 /var/run/apt-cacher-ng
-chown ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} /var/run/apt-cacher-ng
+mkdir -p -m 755 /run/apt-cacher-ng
+chown ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} /run/apt-cacher-ng
 
 # create cache dir
 chown -R ${APT_CACHER_NG_USER}:root ${APT_CACHER_NG_CACHE_DIR}
