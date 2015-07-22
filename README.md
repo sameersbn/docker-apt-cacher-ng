@@ -8,6 +8,7 @@
 - [Getting started](#getting-started)
   - [Installation](#installation)
   - [Quickstart](#quickstart)
+  - [Command-line arguments](#command-line-arguments)
   - [Persistence](#persistence)
   - [Usage](#usage)
   - [Logs](#logs)
@@ -73,7 +74,16 @@ docker run --name apt-cacher-ng -d --restart=always \
 
 *Alternatively, you can use the sample [docker-compose.yml](docker-compose.yml) file to start the container using [Docker Compose](https://docs.docker.com/compose/)*
 
-> Any arguments specified on the `docker run` command are passed on the `redis-server` command.
+## Command-line arguments
+
+You can customize the launch command of Apt-Cacher NG server by specifying arguments to `apt-cacher-ng` on the `docker run` command. For example the following command prints the help menu of `apt-cacher-ng` command:
+
+```bash
+docker run --name apt-cacher-ng -it --rm \
+  --publish 3142:3142 \
+  --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
+  sameersbn/apt-cacher-ng:latest -h
+```
 
 ## Persistence
 
@@ -116,7 +126,7 @@ docker exec -it apt-cacher-ng tail -f /var/log/apt-cacher-ng/apt-cacher.log
 
 ## Cache expiry
 
-Arguments specified on the `docker run` command are passed on the `apt-cacher-ng` command. Using this feature, we can specify the `-e` argument to initiate the cache expiry maintenance task.
+Using the [Command-line arguments](#command-line-arguments) feature, you can specify the `-e` argument to initiate Apt-Cacher NG's cache expiry maintenance task.
 
 ```bash
 docker run --name apt-cacher-ng -it --rm \
@@ -125,7 +135,7 @@ docker run --name apt-cacher-ng -it --rm \
   sameersbn/apt-cacher-ng:latest -e
 ```
 
-The same can also be achieved on a running instance by visiting the url http://172.17.42.1:3142/acng-report.html in the web browser and selecting the **Start Scan and/or Expiration** option.
+The same can also be achieved on a running instance by visiting the url http://localhost:3142/acng-report.html in the web browser and selecting the **Start Scan and/or Expiration** option.
 
 ## Upgrading
 
