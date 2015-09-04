@@ -17,3 +17,4 @@ RUN chmod 755 /sbin/entrypoint.sh
 EXPOSE 3142/tcp
 VOLUME ["${APT_CACHER_NG_CACHE_DIR}"]
 ENTRYPOINT ["/sbin/entrypoint.sh"]
+CMD ["/usr/sbin/apt-cacher-ng"]
