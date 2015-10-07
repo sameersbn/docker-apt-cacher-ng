@@ -47,7 +47,7 @@ If the above recommendations do not help then [report your issue](../../issues/n
 
 ## Installation
 
-This image is available as a [trusted build](//hub.docker.com/r/sameersbn/apt-cacher-ng) on the [Docker hub](//hub.docker.com) and is the recommended method of installation.
+Automated builds of the image are available on [Quay.io](https://quay.io/repository/sameersbn/apt-cacher-ng) and is the recommended method of installation.
 
 ```bash
 docker pull quay.io/sameersbn/apt-cacher-ng:latest
