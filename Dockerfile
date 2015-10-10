@@ -7,7 +7,7 @@ ENV APT_CACHER_NG_VERSION=0.7.26 \
     APT_CACHER_NG_USER=apt-cacher-ng
 
 RUN apt-get update && \
-    apt-get install -y apt-cacher-ng=${APT_CACHER_NG_VERSION}* \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y apt-cacher-ng=${APT_CACHER_NG_VERSION}* \
  && sed 's/# ForeGround: 0/ForeGround: 1/' -i /etc/apt-cacher-ng/acng.conf \
  && rm -rf /var/lib/apt/lists/*
 
