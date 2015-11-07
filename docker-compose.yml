@@ -1,5 +1,5 @@
 AptCacherNG:
-  image: quay.io/sameersbn/apt-cacher-ng:latest
+  image: sameersbn/apt-cacher-ng:latest
   ports:
     - "3142:3142"
   volumes:
