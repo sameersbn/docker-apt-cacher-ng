@@ -11,3 +11,9 @@ spec:
       ports:
         - containerPort: 3142
           protocol: TCP
+      volumeMounts:
+        - mountPath: /var/cache/apt-cacher-ng
+          name: data
+  volumes:
+    - name: data
+      emptyDir: {}
