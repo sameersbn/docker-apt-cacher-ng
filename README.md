@@ -58,9 +58,7 @@ docker pull sameersbn/apt-cacher-ng:latest
 Alternatively you can build the image yourself.
 
 ```bash
-git clone https://github.com/sameersbn/docker-apt-cacher-ng.git
-cd docker-apt-cacher-ng
-docker build --tag $USER/apt-cacher-ng .
+docker build -t sameersbn/apt-cacher-ng github.com/sameersbn/docker-apt-cacher-ng
 ```
 
 ## Quickstart
