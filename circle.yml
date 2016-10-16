@@ -1,15 +1,13 @@
 machine:
   services:
     - docker
+
 dependencies:
-  cache_directories:
-    - "~/docker-apt-cacher-ng"
   override:
     - docker info
-    - if [[ -e ~/docker-apt-cacher-ng/image.tar ]]; then docker load --input ~/docker-apt-cacher-ng/image.tar; fi
-    - docker build -t sameersbn/apt-cacher-ng .
-    - mkdir -p ~/docker-apt-cacher-ng; docker save --output ~/docker-apt-cacher-ng/image.tar sameersbn/apt-cacher-ng
+
 test:
   override:
+    - docker build -t sameersbn/apt-cacher-ng .
     - docker run -d -p 23142:3142 sameersbn/apt-cacher-ng; sleep 10
     - curl --retry 10 --retry-delay 5 -v -s -L -o /dev/null http://127.0.0.1:23142/apt-cacher
