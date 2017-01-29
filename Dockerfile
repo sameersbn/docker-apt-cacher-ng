@@ -1,4 +1,4 @@
-FROM sameersbn/ubuntu:14.04.20170110
+FROM sameersbn/ubuntu:14.04.20170123
 MAINTAINER sameer@damagehead.com
 
 ENV APT_CACHER_NG_VERSION=0.7.26 \
