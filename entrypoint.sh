@@ -34,8 +34,8 @@ fi
 
 # default behaviour is to launch apt-cacher-ng
 if [[ -z ${1} ]]; then
-  exec start-stop-daemon --start --chuid ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} \
+  exec tini -- start-stop-daemon --start --chuid ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} \
     --exec $(which apt-cacher-ng) -- -c /etc/apt-cacher-ng ${EXTRA_ARGS}
 else
-  exec "$@"
+  exec tini -- "$@"
 fi
