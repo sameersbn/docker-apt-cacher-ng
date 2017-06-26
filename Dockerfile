@@ -12,6 +12,17 @@ RUN apt-get update && \
  && sed 's/# PassThroughPattern:.*this would allow.*/PassThroughPattern: .* #/' -i /etc/apt-cacher-ng/acng.conf \
  && rm -rf /var/lib/apt/lists/*
 
+ENV TINI_VERSION v0.14.0
+
+RUN cd /tmp && \
+  gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 && \
+  gpg --fingerprint 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 | grep -q "Key fingerprint = 6380 DC42 8747 F6C3 93FE  ACA5 9A84 159D 7001 A4E5" && \
+  wget -nv https://github.com/krallin/tini/releases/download/$TINI_VERSION/tini.asc -O tini.asc && \
+  wget -nv https://github.com/krallin/tini/releases/download/$TINI_VERSION/tini -O /usr/local/bin/tini && \
+  gpg --verify tini.asc /usr/local/bin/tini && \
+  chmod +x /usr/local/bin/tini && \
+  rm tini.asc
+
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
