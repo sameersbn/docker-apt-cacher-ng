@@ -10,6 +10,7 @@
   - [Quickstart](#quickstart)
   - [Command-line arguments](#command-line-arguments)
   - [Persistence](#persistence)
+  - [Docker Compose](#docker-compose)
   - [Usage](#usage)
   - [Logs](#logs)
 - [Maintenance](#maintenance)
@@ -96,6 +97,34 @@ SELinux users should update the security context of the host mountpoint so that 
 ```bash
 mkdir -p /srv/docker/apt-cacher-ng
 chcon -Rt svirt_sandbox_file_t /srv/docker/apt-cacher-ng
+```
+
+## Docker Compose
+
+To run Apt-Cacher NG with Docker Compose, create the following `docker-compose.yml` file
+
+```yaml
+---
+version: '3'
+
+services:
+  apt-cacher-ng:
+    image: sameersbn/apt-cacher-ng
+    container_name: apt-cacher-ng
+    ports:
+      - "3142:3142"
+    volumes:
+      - apt-cacher-ng:/var/cache/apt-cacher-ng
+    restart: always
+
+volumes:
+  apt-cacher-ng:
+```
+
+The Apt-Cache NG service can then be started in the background with:
+
+```bash
+docker-compose up -d
 ```
 
 ## Usage
