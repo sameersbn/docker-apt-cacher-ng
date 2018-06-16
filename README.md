@@ -191,7 +191,7 @@ To upgrade to newer releases:
   4. Start the updated image
 
   ```bash
-  docker run -name apt-cacher-ng -d \
+  docker run --name apt-cacher-ng -d \
     [OPTIONS] \
     sameersbn/apt-cacher-ng:latest
   ```
