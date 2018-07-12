@@ -9,7 +9,7 @@ ENV APT_CACHER_NG_VERSION=0.9.1 \
 
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y apt-cacher-ng=${APT_CACHER_NG_VERSION}* wget \
- && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 \
+ && gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 \
  && gpg --fingerprint 595E85A6B1B4779EA4DAAEC70B588DFF0527A9B7 | grep -q "Key fingerprint = 6380 DC42 8747 F6C3 93FE  ACA5 9A84 159D 7001 A4E5" \
  && wget -nv https://github.com/krallin/tini/releases/download/$TINI_VERSION/tini.asc -O tini.asc \
  && wget -nv https://github.com/krallin/tini/releases/download/$TINI_VERSION/tini -O /usr/local/bin/tini \
