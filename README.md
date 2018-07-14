@@ -67,7 +67,7 @@ docker build -t sameersbn/apt-cacher-ng github.com/sameersbn/docker-apt-cacher-n
 Start Apt-Cacher NG using:
 
 ```bash
-docker run --name apt-cacher-ng -d --restart=always \
+docker run --name apt-cacher-ng --init -d --restart=always \
   --publish 3142:3142 \
   --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
   sameersbn/apt-cacher-ng:3.1
@@ -80,7 +80,7 @@ docker run --name apt-cacher-ng -d --restart=always \
 You can customize the launch command of Apt-Cacher NG server by specifying arguments to `apt-cacher-ng` on the `docker run` command. For example the following command prints the help menu of `apt-cacher-ng` command:
 
 ```bash
-docker run --name apt-cacher-ng -it --rm \
+docker run --name apt-cacher-ng --init -it --rm \
   --publish 3142:3142 \
   --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
   sameersbn/apt-cacher-ng:3.1 -h
@@ -158,7 +158,7 @@ docker exec -it apt-cacher-ng tail -f /var/log/apt-cacher-ng/apt-cacher.log
 Using the [Command-line arguments](#command-line-arguments) feature, you can specify the `-e` argument to initiate Apt-Cacher NG's cache expiry maintenance task.
 
 ```bash
-docker run --name apt-cacher-ng -it --rm \
+docker run --name apt-cacher-ng --init -it --rm \
   --publish 3142:3142 \
   --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \
   sameersbn/apt-cacher-ng:3.1 -e
@@ -191,7 +191,7 @@ To upgrade to newer releases:
   4. Start the updated image
 
   ```bash
-  docker run --name apt-cacher-ng -d \
+  docker run --name apt-cacher-ng --init -d \
     [OPTIONS] \
     sameersbn/apt-cacher-ng:3.1
   ```
