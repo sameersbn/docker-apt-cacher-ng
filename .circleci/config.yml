@@ -14,16 +14,6 @@ jobs:
           version: 17.06.0-ce
 
       - run:
-          name: Upgrade system packages (workaround - https://github.com/docker-library/docker/issues/72)
-          command: |
-            apk upgrade --no-cache
-
-      - run:
-          name: Installing curl
-          command: |
-            apk add --no-cache curl
-
-      - run:
           name: Docker info
           command: |
             docker version
