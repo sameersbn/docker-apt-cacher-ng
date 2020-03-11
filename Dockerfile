@@ -21,7 +21,7 @@ RUN chmod 755 /sbin/entrypoint.sh
 EXPOSE 3142/tcp
 
 HEALTHCHECK --interval=10s --timeout=2s --retries=3 \
-    CMD wget -q0 - http://localhost:3142/acng-report.html || exit 1
+    CMD wget -q -t1 -o /dev/null  http://localhost:3142/acng-report.html || exit 1
 
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 
