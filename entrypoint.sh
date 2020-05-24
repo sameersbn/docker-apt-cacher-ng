@@ -27,7 +27,7 @@ create_log_dir
 if [[ ${1:0:1} = '-' ]]; then
   EXTRA_ARGS="$@"
   set --
-elif [[ ${1} == apt-cacher-ng || ${1} == $(which apt-cacher-ng) ]]; then
+elif [[ ${1} == apt-cacher-ng || ${1} == $(command -v apt-cacher-ng) ]]; then
   EXTRA_ARGS="${@:2}"
   set --
 fi
@@ -35,7 +35,7 @@ fi
 # default behaviour is to launch apt-cacher-ng
 if [[ -z ${1} ]]; then
   exec start-stop-daemon --start --chuid ${APT_CACHER_NG_USER}:${APT_CACHER_NG_USER} \
-    --exec $(which apt-cacher-ng) -- -c /etc/apt-cacher-ng ${EXTRA_ARGS}
+    --exec "$(command -v apt-cacher-ng)" -- -c /etc/apt-cacher-ng ${EXTRA_ARGS}
 else
   exec "$@"
 fi
