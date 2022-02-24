@@ -2,7 +2,8 @@ name: Build and Publish
 
 on:
   push:
-    branches: [main]
+    branches:
+      - master
     tags:
       - 'v*.*.*'
   pull_request:
