@@ -1,4 +1,4 @@
-![apt-cacher-ng](https://github.com/sameersbn/docker-apt-cacher-ng/actions/workflows/build.yml/badge.svg)
+[![apt-cacher-ng](https://github.com/sameersbn/docker-apt-cacher-ng/actions/workflows/build.yml/badge.svg)](https://github.com/sameersbn/docker-apt-cacher-ng/actions/workflows/build.yml)
 
 # sameersbn/apt-cacher-ng:3.3-20200524
 
