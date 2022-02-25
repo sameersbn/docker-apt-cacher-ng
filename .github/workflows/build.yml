@@ -2,10 +2,6 @@ name: Build and Publish
 
 on:
   push:
-    paths:
-      - .dockerignore
-      - entrypoint.sh
-      - Dockerfile
     branches:
       - master
     tags:
