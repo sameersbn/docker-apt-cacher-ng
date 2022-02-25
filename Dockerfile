@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20200423
+FROM ubuntu:focal-20220113
 
 LABEL maintainer="sameer@damagehead.com"
 
