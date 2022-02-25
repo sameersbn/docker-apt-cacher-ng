@@ -2,11 +2,21 @@ name: Build and Publish
 
 on:
   push:
+    paths:
+      - .dockerignore
+      - entrypoint.sh
+      - Dockerfile
     branches:
       - master
     tags:
       - 'v*.*.*'
   pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+    branches:
+      - master
+
 
 jobs:
   build-and-push-docker-image:
