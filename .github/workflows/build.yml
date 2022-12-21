@@ -44,6 +44,33 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: linux/amd64
 
+  test-integration:
+      name: Integration tests in Docker Compose
+      needs: [build-test-image]
+      runs-on: ubuntu-latest
+
+      permissions:
+        packages: read
+
+      steps:
+
+        - name: Checkout git repo
+          uses: actions/checkout@v3
+
+        - name: Login to ghcr.io registry
+          uses: docker/login-action@v2
+          with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: Test healthcheck in Docker Compose # Need to rework sed RegEx
+          run: |
+            sed -i 's/3.7.4-20220421/$(TESTING_IMAGE)/' docker-compose.yml
+            export TESTING_IMAGE=ghcr.io/sameersbn/apt-cacher-ng:"$GITHUB_RUN_ID"
+            echo Testing image: "$TESTING_IMAGE"
+            docker compose -f docker-compose.yml up --exit-code-from apt-cacher-ng
+
   scan-image:
       name: Scan Image with Trivy
       needs: [build-test-image]
