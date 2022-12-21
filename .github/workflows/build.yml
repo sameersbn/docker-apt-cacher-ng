@@ -46,6 +46,7 @@ jobs:
 
   build-and-push-docker-image:
     name: Build and Push Docker Image
+    needs: [build-test-image]
     runs-on: ubuntu-latest
 
     steps:
