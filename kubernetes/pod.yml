@@ -8,6 +8,11 @@ spec:
   containers:
     - name: apt-cacher-ng
       image: sameersbn/apt-cacher-ng
+      imagePullPolicy: IfNotPresent
+      resources:
+        limits:
+          memory: "64Mi"
+          cpu: "500m"
       ports:
         - containerPort: 3142
           protocol: TCP
