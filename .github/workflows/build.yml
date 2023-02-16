@@ -67,13 +67,6 @@ jobs:
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
 
-        - name: Test healthcheck in Docker Compose # Need to rework sed RegEx
-          run: |
-            sed -i 's/3.7.4-20220421/$(TESTING_IMAGE)/' docker-compose.yml
-            export TESTING_IMAGE=ghcr.io/sameersbn/apt-cacher-ng:"$GITHUB_RUN_ID"
-            echo Testing image: "$TESTING_IMAGE"
-            docker compose -f docker-compose.yml up --exit-code-from apt-cacher-ng
-
   scan-image:
       name: Scan Image with Trivy
       needs: [build-test-image]
@@ -123,7 +116,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Docker meta
         id: meta
