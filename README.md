@@ -111,6 +111,8 @@ services:
   apt-cacher-ng:
     image: sameersbn/apt-cacher-ng
     container_name: apt-cacher-ng
+    enviroment:
+      APT_CACHER_NG_USER: 1000 # Optional
     ports:
       - "3142:3142"
     volumes:
@@ -126,6 +128,11 @@ The Apt-Cache NG service can then be started in the background with:
 ```bash
 docker-compose up -d
 ```
+### Environmental Variables
+
+| Variable Name | Value | Method |Function |
+|---|---|---|---|
+| `APT_CACHER_NG_USER` | USER-ID Number |RUN `id` within linux terminal | Is used to set the folder permissions for all folders used via the APT-Cacher-NG Container |
 
 ## Usage
 
