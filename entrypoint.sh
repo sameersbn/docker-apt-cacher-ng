@@ -23,6 +23,9 @@ create_pid_dir
 create_cache_dir
 create_log_dir
 
+#copy files from config directory
+cp ${APT_CACHER_NG_CONFIG_DIR}/.  /etc/apt-cacher-ng/
+
 # allow arguments to be passed to apt-cacher-ng
 if [[ ${1:0:1} = '-' ]]; then
   EXTRA_ARGS="$@"
