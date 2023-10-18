@@ -136,9 +136,8 @@ Acquire::HTTP::Proxy "http://172.17.0.1:3142";
 Acquire::HTTPS::Proxy "false";
 ```
 
-If you are using a Laptop that is not always able to reach the container
-you want it to be able to bypass the proxy if it cant reach it
-use the these files 2 files
+If you are using a Laptop that is not always able to reach apt-proxy-ng
+in order to be able to bypass the proxy, use the these 2 files
 ```
 cp 01proxy /etc/apt/apt.conf.d/
 cp apt-proxy-detect.sh /usr/local/bin/
