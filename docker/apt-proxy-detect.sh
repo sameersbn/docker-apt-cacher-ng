@@ -1,10 +1,21 @@
 #!/bin/bash
 
-IP=172.17.0.1
-PORT=3142
-if nc -w1 -z $IP $PORT 2> /dev/null
+if [ -z $APT_CACHER_NG_IP ]
 then
-    echo -n "http://${IP}:${PORT}"
+    echo -n "DIRECT"
+    exit
+fi
+
+if [ -z $APT_CACHER_NG_PORT ]
+then
+    echo -n "DIRECT"
+    exit
+fi
+
+echo nc -w1 -z "$APT_CACHER_NG_IP" "$APT_CACHER_NG_PORT"
+if nc -w1 -z "$APT_CACHER_NG_IP" "$APT_CACHER_NG_PORT" 2> /dev/null
+then
+    echo -n "http://${APT_CACHER_NG_IP}:${APT_CACHER_NG_PORT}"
 else
     echo -n "DIRECT"
 fi
