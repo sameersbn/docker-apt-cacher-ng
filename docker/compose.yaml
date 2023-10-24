@@ -2,10 +2,10 @@ version: '3.5'
 
 services:
   my_server:
-    image: apt-cacher-ng/ubuntu:latest
+    image: apt-cacher-ng/ubuntu:${UBUNTU_VERSION}
     build:
       context: .
       args:
-        UBUNTU_VERSION: 'lunar'
-        APT_CACHER_NG_IP: '172.17.0.1'
-        APT_CACHER_NG_PORT: '3142'
+        UBUNTU_VERSION: '${UBUNTU_VERSION}'
+        APT_CACHER_NG_IP: '${APT_CACHER_NG_IP}'
+        APT_CACHER_NG_PORT: '${APT_CACHER_NG_PORT}'
