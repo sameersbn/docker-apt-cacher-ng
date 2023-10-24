@@ -149,6 +149,7 @@ Similarly, to use Apt-Cacher NG in you Docker containers add the following line 
 RUN echo 'Acquire::HTTP::Proxy "http://172.17.0.1:3142";' >> /etc/apt/apt.conf.d/01proxy \
  && echo 'Acquire::HTTPS::Proxy "false";' >> /etc/apt/apt.conf.d/01proxy
 ```
+if you want to create your own image that has apt-cacher-ng preinstalled look at the sample config in the docker directory
 
 ## Logs
 
