@@ -1,0 +1,9 @@
+version: '3.5'
+
+services:
+  my_server:
+    image: exsample/my_server
+    build: .
+    environment:
+      APT_CACHER_NG_IP: '172.17.0.1'
+      APT_CACHER_NG_PORT: '3142'
