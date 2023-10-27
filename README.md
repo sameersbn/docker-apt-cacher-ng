@@ -137,10 +137,10 @@ Acquire::HTTPS::Proxy "false";
 ```
 
 If you are using a Laptop that is not always able to reach apt-proxy-ng
-in order to be able to bypass the proxy, use the these 2 files
+in order to be able detect where to use the proxy or connect direct, use the these 2 files on the Laptop
 ```
-cp 01proxy /etc/apt/apt.conf.d/
-cp apt-proxy-detect.sh /usr/local/bin/
+cp host/01proxy /etc/apt/apt.conf.d/
+cp host/apt-proxy-detect.sh /usr/local/bin/
 ```
 
 Similarly, to use Apt-Cacher NG in you Docker containers add the following line to your `Dockerfile` before any `apt-get` commands.
