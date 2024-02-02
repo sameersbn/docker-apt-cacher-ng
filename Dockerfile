@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20230816
+FROM ubuntu:jammy-20240125
 
 LABEL maintainer="sameer@damagehead.com"
 
