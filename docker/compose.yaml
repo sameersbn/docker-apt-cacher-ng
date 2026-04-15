@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  my_server:
+    image: apt-cacher-ng/ubuntu:${UBUNTU_VERSION}
+    build:
+      context: .
+      args:
+        UBUNTU_VERSION: '${UBUNTU_VERSION}'
+        APT_CACHER_NG_IP: '${APT_CACHER_NG_IP}'
+        APT_CACHER_NG_PORT: '${APT_CACHER_NG_PORT}'

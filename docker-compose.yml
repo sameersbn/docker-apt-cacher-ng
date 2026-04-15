@@ -8,4 +8,7 @@ services:
     ports:
     - "3142:3142"
     volumes:
-    - /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng
+    - apt-cacher-ng:/var/cache/apt-cacher-ng
+
+volumes:
+  apt-cacher-ng:
