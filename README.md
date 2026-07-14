@@ -59,7 +59,7 @@ docker pull sameersbn/apt-cacher-ng:3.7.4-20220421
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t sameersbn/apt-cacher-ng github.com/sameersbn/docker-apt-cacher-ng
+docker build -t sameersbn/apt-cacher-ng https://github.com/sameersbn/docker-apt-cacher-ng.git
 ```
 
 ## Quickstart
